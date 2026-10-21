@@ -1,6 +1,6 @@
 # 3D Arm Simulator
 
-A browser-based 3D SCARA-style robot simulator with orbit controls, forward/inverse kinematics, joint-speed limits, vertical motion, a parallel-jaw gripper, and pick-and-place. Created for Skipper Chen's engineering learning portfolio with AI assistance.
+A browser-based 3D SCARA-style robot simulator with orbit controls, forward/inverse kinematics, joint-speed limits, vertical motion, a parallel-jaw gripper, and pick-and-place. Created for Skipper Chen's engineering learning portfolio.
 
 **[Launch the simulator](https://niceskipperchen-coder.github.io/robotic-arm-simulator/)** · [Source code](https://github.com/niceskipperchen-coder/robotic-arm-simulator)
 
@@ -69,7 +69,7 @@ The 17 automated tests cover known forward positions, both inverse branches, unr
 
 ## Learning and authorship
 
-The initial interface, implementation, and tests were generated with Codex assistance. This repository is a starting point for learning and experimentation; it does not claim independent hardware construction or completed student research.
+This repository is a starting point for learning and experimentation; it does not claim independent hardware construction or completed student research.
 
 Suggested experiments to document yourself:
 
