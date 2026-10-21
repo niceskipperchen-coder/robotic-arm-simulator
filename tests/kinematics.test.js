@@ -1,0 +1,10 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { forward, inverse } from '../dist/kinematics.js';
+const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-7, `${a} should equal ${b}`);
+test('straight arm reaches the sum of the two links',()=>{const p=forward(0,0,180,140);near(p.x,320);near(p.y,0);});
+test('elbow rotation is relative to the shoulder',()=>{const p=forward(90,-90,180,140);near(p.x,140);near(p.y,180);});
+test('inverse solutions reach a known right-angle target in both configurations',()=>{for(const sign of [1,-1]){const a=inverse(140,180,180,140,sign);assert.ok(a);const p=forward(a.shoulder,a.elbow,180,140);near(p.x,140);near(p.y,180);assert.equal(Math.sign(a.elbow),sign);}});
+test('unreachable targets outside maximum reach and inside inner radius are rejected',()=>{assert.equal(inverse(321,0,180,140),null);assert.equal(inverse(0,0,180,140),null);});
+test('full extension and full folding remain solvable',()=>{assert.ok(inverse(320,0,180,140));assert.ok(inverse(40,0,180,140));});
+test('invalid lengths and nonfinite targets are rejected',()=>{assert.equal(inverse(NaN,0,180,140),null);assert.equal(inverse(1,2,0,140),null);});
